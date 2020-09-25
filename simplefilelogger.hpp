@@ -1,6 +1,8 @@
 #pragma once
 #include "strategy.hpp"
 #include <iostream>
+#include <ostream>
+#include <string>
 
 class SimpleFileLogger : public Strategy
 {

@@ -10,5 +10,6 @@ void TimedFileLogger::write(const std::string &message)
     {
         tmptime = asctime(gmtime(&current_time));
     }
-    os << tmptime << std::endl << message;
+
+    os << tmptime << std::endl << message << "\nhash -> " << std::hash<std::string>{}(tmptime);
 }

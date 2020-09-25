@@ -3,7 +3,7 @@
 #include "timedfilelogger.hpp"
 #include "strategyconsole.hpp"
 #include <fstream>
-
+#include "logger.hpp"
 
 int main()
 {
@@ -12,12 +12,13 @@ int main()
     file1.open("res1.txt", std::ios::out);
     file2.open("res2.txt", std::ios::out);
 
-    Strategy *loggerC = new StrategyConsole();
-    loggerC->write("Hello World!");
-    Strategy *loggerF = new SimpleFileLogger(file1);
-    loggerF->write("Hello");
-    Strategy *loggerT = new TimedFileLogger(file2);
-    loggerT->write("MAXIM HI");
-    
+    Logger *logger = new Logger(new StrategyConsole());
+    logger->set_strategy(new SimpleFileLogger(file1));   
+    logger->MetaWriter("HELLO WORLD!");
+    logger->set_strategy(new TimedFileLogger(file2));
+    logger->MetaWriter("TEXTED WORDS!");
+
+
+
     return 0;
 }
